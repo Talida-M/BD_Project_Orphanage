@@ -1,0 +1,108 @@
+/*1. Detereminati numele copiilor si al ingrijitorilor care au participat la desfasurarea activitatilor de baschet 
+sau pictura ale orfelinatului.
+Sa se precizeze si denumirea actvitatii desfasurate, numele Orfelinatului si id-ul(se va utiliza JOIN).
+*/
+SELECT DISTINCT t2.nume_o, activ.denumire, ing.nume, orf.nume, t2.id_orfelinat
+FROM Participa t1
+JOIN Orfani t2 ON(t2.id_orfan=t1.id_orfan)
+JOIN Activitati activ ON(activ.id_activ=t1.id_activ)
+JOIN Ingrijitor ing ON (ing.id_gardian=t1.id_gardian)
+JOIN Orfelinat orf ON(t2.id_orfelinat=orf.id_orfelinat)
+WHERE t1.id_activ IN(SELECT id_activ FROM Activitati
+ WHERE lower(denumire)='pictura' OR lower(denumire)='baschet');
+
+/*2. Determinati cererile de adoptie care au o vechime mai mica de 3 ani si care nu au fost acceptate inca pentru 
+o adoptie,
+excluzandu-le pe cele din orfelinatul cu denumirea 'Life' si pe cel care se afla in Constanta folosind
+subcereri nesincronizate*/
+SELECT * FROM Cerere_Adoptie
+WHERE id_adoptie NOT IN (SELECT id_adoptie FROM Parinti_Adoptivi)
+ AND MONTHS_BETWEEN(SYSDATE, data_cerere)<36
+ AND id_orfelinat NOT IN (SELECT id_orfelinat FROM Orfelinat
+ WHERE LOWER(nume) LIKE 'life' OR id_locatie IN( SELECT id_locatie FROM 
+Locatie
+ WHERE lower(oras) LIKE 'constanta'));
+
+/*3. Completati statusul activitatilor la care s-a participat. Astfel daca in coloana id_gardian sau id_orfan
+atributul este NULL inseamna ca activitatea din ziua respectiva a fost amanata sau nu s-a tinut, 
+altfel aceasta a avut loc.Afisati si numele copiilor si al ingrijitorilor. Se va afisa ordonat crescator dupa id-ul 
+orfanului */
+SELECT DISTINCT p.id_orfan, p.id_gardian, orf.nume_o, ing.nume,
+CASE 
+ WHEN (p.id_orfan IS null OR p.id_gardian IS null) THEN 'Amanata'
+ ELSE 'A avut loc'
+END AS status_activ
+FROM Participa p
+LEFT JOIN Orfani orf ON(p.id_orfan=orf.id_orfan)
+LEFT JOIN Ingrijitor ing ON (ing.id_gardian=p.id_gardian)
+Order by p.id_orfan DESC;
+
+/* 5. Sa se afiseze numele si id-ul copiilor care s-au nascut inainte de 2011 si care au participat la sah si 
+echitatie,
+dar care nu fac parte din orfelinatul cu codul 1112. Folositi SUBCERERI CORELATE
+*/
+ SELECT p.id_orfan,(SELECT o.nume_o
+ FROM Orfani o
+ WHERE p.id_orfan=o.id_orfan AND o.id_orfelinat != 1112
+ AND o.data_nastere_orf<TO_DATE('01-JAN-2011','dd-MON-yyyy') )"NUME" , 
+ 
+ (SELECT denumire
+ FROM Activitati act
+ WHERE act.id_activ=p.id_activ AND (lower(act.denumire)='sah' OR
+ lower(act.denumire)='echitatie')) "SAH/ECHITATIE"
+FROM Participa p
+WHERE p.id_activ IN (SELECT id_activ
+ FROM Activitati 
+ WHERE (lower(denumire)='sah' OR
+ lower(denumire)='echitatie')) 
+ AND p.id_orfan IN (SELECT id_orfan
+ FROM Orfani 
+ WHERE id_orfelinat != 1112
+ AND data_nastere_orf<TO_DATE('01-JAN-2011','dd-MON-yyyy'));
+ 
+ 
+ /*16. Formulați în limbaj natural și implementați în SQL: o cerere ce utilizează operația outer-join pe minimum 
+4
+tabele și două cereri ce utilizează operația division.*/
+/*Sa se afiseze pentru fiecare activitate desfasurata cel putin odata, numele, id-ul, numele intreg al gardianului 
+si al copilului dar si id-ul orfelinatului in care s-a desfasurat activitatea*/
+SELECT p.id_participare, act.id_activ, act.denumire, g.nume, orf.nume_o ||' '|| orf.prenume_o "Nume_Complet" 
+, o.id_orfelinat
+FROM Participa p right outer join Activitati act on(p.id_activ=act.id_activ)
+ right outer join Orfani orf on(p.id_orfan=orf.id_orfan)
+ right outer join Ingrijitor g on(g.id_gardian=p.id_gardian)
+ right outer join Orfelinat o on(orf.id_orfelinat=o.id_orfelinat);
+ 
+ 
+ /*Folosind Division aflati numele copiilor care participa la activitatile coordonate doar de ingrijitorul 
+cu id-ul 555 */ 
+SELECT nume_o ||' '|| prenume_o "NUME COMPLET"
+FROM Orfani
+WHERE id_orfan IN(SELECT id_orfan 
+ FROM Participa
+ WHERE id_gardian=555)
+MINUS 
+SELECT nume_o ||' '|| prenume_o "NUME COMPLET"
+FROM Orfani
+WHERE id_orfan IN(SELECT id_orfan 
+ FROM Participa
+ WHERE id_gardian!=555);
+ 
+ /* Folosind DIVISION afisati numele si id-ul copiilor care au participat doar la activitatile
+cu un punctaj egal cu 15 */
+SELECT id_orfan,nume_o ||' '|| prenume_o "NUME COMPLET"
+FROM Orfani
+WHERE id_orfan IN
+(SELECT id_orfan
+FROM Participa
+WHERE id_activ IN (SELECT id_activ
+ FROM Activitati WHERE puncte=15))
+MINUS
+SELECT id_orfan, nume_o ||' '|| prenume_o "NUME COMPLET"
+FROM Orfani
+WHERE id_orfan IN (SELECT id_orfan
+ FROM Participa
+ WHERE id_activ IN(SELECT id_activ
+ FROM Activitati
+ WHERE puncte!=15));
+
