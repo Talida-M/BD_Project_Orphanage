@@ -1,0 +1,96 @@
+
+ CREATE TABLE Locatie 
+ ( id_locatie number(3) constraint pkey_idl primary key, 
+  adresa varchar(100) constraint adresa NOT NULL, 
+  oras varchar2(20) constraint oras NOT NULL, 
+  cod_postal number(6) constraint cod_postal NOT NULL  
+ )
+
+CREATE TABLE ANGAJAT 
+ (id_angajat number(5) constraint pkey_ang1 primary key, 
+   id_orfelinat int, foreign key(id_orfelinat) references Orfelinat(id_orfelinat),
+ nume varchar2(20) constraint nume NOT NULL, 
+ prenume varchar2(20) constraint prenume NOT NULL, 
+ tip_angajat varchar2(25) constraint tip_angajat NOT NULL,
+ data_ang date default sysdate
+ )
+ 
+
+CREATE TABLE Orfelinat 
+(id_orfelinat number(4) CONSTRAINT pkey_idorf primary key, 
+ nume varchar2(20) constraint nume_O NOT NULL, 
+ id_locatie int, foreign key(id_locatie) references Locatie(id_locatie), 
+ id_sponsor int, foreign key(id_sponsor) references Sponsor(id_sponsor), 
+ an_aparitie date default sysdate)
+
+ CREATE TABLE Cerere_Adoptie 
+ ( id_adoptie number(3) constraint pkey_idc primary key, 
+ id_orfelinat int, foreign key(id_orfelinat) references Orfelinat(id_orfelinat), 
+ data_cerere date default sysdate  )
+
+ CREATE TABLE Parinti_Adoptivi 
+ ( id_parinti number(3) constraint pkey_idp primary key, 
+ id_adoptie int, foreign key(id_adoptie) references Cerere_Adoptie(id_adoptie), 
+ id_locatie int, foreign key(id_locatie) references Locatie(id_locatie), 
+ contact varchar(15) 
+ )
+ 
+ CREATE TABLE Istoric_Adoptii
+( id_adoptii number(3) constraint pkey_idis primary key,
+  id_orfelinat int, foreign key(id_orfelinat) references Orfelinat(id_orfelinat),
+  an_adoptie date default sysdate,
+  id_datecopil int,  foreign key(id_datecopil) references Copil_Adoptiv(id_datecopil),
+  id_parinti int, foreign key(id_parinti) references Parinti_Adoptivi(id_parinti)
+ )
+ 
+ CREATE TABLE Copil_Adoptiv
+(id_datecopil number(4) constraint pkey_idcop primary key,
+ id_orfelinat int, foreign key(id_orfelinat) references Orfelinat(id_orfelinat),
+   nume varchar2(20) constraint nume_cop NOT NULL,
+   prenume varchar2(30) constraint prenume_cop NOT NULL,
+  data_nastere date
+)
+
+CREATE TABLE Orfani
+(id_orfan number(4) constraint pkey_idof primary key,
+ id_orfelinat int, foreign key(id_orfelinat) references Orfelinat(id_orfelinat),
+ nume_o varchar2(20) constraint nume_o_c NOT NULL,
+   prenume_o varchar2(30) constraint prenume_o_c NOT NULL,
+  data_nastere_orf date,
+  data_sosire date constraint data_sosire_orf NOT NULL,
+  nr_camera number(3) constraint nr_camera_orf NOT NULL
+)
+
+CREATE TABLE Istoric_Familii
+(id_istoric number(5) constraint pkey_ist primary key,
+id_orfan int, foreign key(id_orfan) references Orfani(id_orfan),
+ id_locatie int, foreign key(id_locatie) references Locatie(id_locatie), 
+nume_fam varchar2(60) ,
+cauza character(400) ,
+contact number(15)
+)
+
+CREATE TABLE Ingrijitor 
+(id_gardian number(3) constraint pkey_idI primary key,
+nume VARCHAR2(50) constraint nume_g NOT NULL,
+data_angajarii date default  sysdate
+)
+
+CREATE TABLE Activitati
+(id_activ number(2) constraint pkey_idact primary key,
+denumire varchar2(20) constraint denimre_a NOT NULL,
+puncte number(3)
+)
+
+CREATE TABLE Participa
+(ora timestamp(2) constraint pkey_idora primary key,
+id_orfan int, foreign key(id_orfan) references Orfani(id_orfan),
+ id_gardian int, foreign key (id_gardian) references Ingrijitor (id_gardian),
+  id_activ int, foreign key (id_activ) references Activitati (id_activ)
+)
+
+
+
+
+
+
