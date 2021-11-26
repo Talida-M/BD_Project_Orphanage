@@ -1,0 +1,157 @@
+--Inserare de elemente
+
+
+INSERT INTO Locatie VALUES (1,'Arad, Str. Independentei, nr, 20', 'Arad',31738);
+INSERT INTO Locatie VALUES (2,'Arad, Str. Mihai Viteazu, bl A1, sc. 2, nr 20', 'Arad',31738);
+INSERT INTO Locatie VALUES (3,'Bihor, Str. Davila, bl. C2, sc. 1, ap. 2', 'Oradea',41001);
+INSERT INTO Locatie VALUES (4,'Olt, Str. Fericirii, nr. 47', 'Slatina',23002);
+INSERT INTO Locatie VALUES (5,'Dolj, Str. Ulmului, nr. 19', 'Craiova',20008);
+INSERT INTO Locatie VALUES (6,'Dolj, Str. Iorga Nicolae, bl. A1, sc. 3', 'Craiova',20008);
+INSERT INTO Locatie VALUES (7,'Sibiu, Str. Somesului, nr. 29', 'Sibiu',55003);
+INSERT INTO Locatie VALUES (8,'Sibiu, Str. Rennes, nr. 21', 'Sibiu',55003);
+INSERT INTO Locatie VALUES (9,'Dambovita, Str. Independentei, nr. 20', 'Targoviste',13002);
+INSERT INTO Locatie VALUES (10,'Arges, Str. Stefan cel Mare, nr. 20', 'Poienarii de Arges',11757);
+INSERT INTO Locatie VALUES (11,'Ilfov, Str. A.I. Cuza, nr. 7', 'Silistea Snagovului',07711);
+INSERT INTO Locatie VALUES (12,'Brasov, Str. A.I. Cuza, nr. 19', 'Brasov',50002);
+INSERT INTO Locatie VALUES (13,'Dolj, Str. A.I. Cuza, nr. 35', 'Craiova',20008);
+INSERT INTO Locatie VALUES (14,'Constanta, Str. Marinei, nr. 56', 'Mangalia',90550);
+INSERT INTO Locatie VALUES (15,'Constanta, Str. Arcului, nr. 2-T', 'Constanta',90003);
+Select *
+From Locatie
+
+INSERT INTO Angajat VALUES(100,'Soran','Aniela-Maria','Asistent Social');
+INSERT INTO Angajat VALUES(101,'Soran','Radu','Bucatar');
+INSERT INTO Angajat VALUES(102,'Olaru','Leonardo','Psiholog');
+INSERT INTO Angajat VALUES(103,'Boboc','Edward','Paznic');
+INSERT INTO Angajat VALUES(104,'Salau','Sorana','Educator');
+INSERT INTO Angajat VALUES(105,'Han','Lee','Asistent');
+Select *
+From Angajat
+INSERT INTO Orfelinat VALUES(1111,'Alice in Wonderland',5,25,TO_DATE('20-JUN-2007','dd-MON-yyyy'));
+INSERT INTO Orfelinat VALUES(1112,'Sunny',15,25,TO_DATE('12-OCT-2012','dd-MON-yyyy'));
+INSERT INTO Orfelinat VALUES(1113, 'Wonderland',7,35,TO_DATE('25-JUN-2015','dd-MON-yyyy'));
+INSERT INTO Orfelinat VALUES(1114,'Happiness',2,65,TO_DATE('01-JUN-2018','dd-MON-yyyy'));
+INSERT INTO Orfelinat VALUES(1115,'Life',12,30,TO_DATE('14-SEP-2010','dd-MON-yyyy'));
+Select *
+From Orfelinat
+
+INSERT INTO Cerere_Adoptie VALUES(150,1111,TO_DATE('20-JUN-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(151,1111,TO_DATE('20-JUN-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(153,1115,TO_DATE('29-OCT-2018','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(154,1113,TO_DATE('20-SEP-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(155,1112,TO_DATE('10-JUL-2018','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(156,1113,TO_DATE('23-DEC-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(157,1114,TO_DATE('08-NOV-2017','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(158,1114,TO_DATE('13-MAY-2018','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(159,1111,TO_DATE('03-SEP-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(160,1111,TO_DATE('20-JAN-2021','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(161,1115,TO_DATE('27-AUG-2020','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(162,1112,TO_DATE('18-AUG-2018','dd-MON-yyyy'));
+INSERT INTO Cerere_Adoptie VALUES(163,1114,TO_DATE('09-FEB-2021','dd-MON-yyyy'));
+
+Select *
+From Cerere_Adoptie 
+
+
+INSERT INTO Parinti_Adoptivi VALUES (200, 150,1, '+0743998128');
+INSERT INTO Parinti_Adoptivi VALUES (202, 164,6, '+0745112368',NULL);
+INSERT INTO Parinti_Adoptivi VALUES (204, 165,10, '+0251456125', 'dima_ag29@yahoo.com');
+INSERT INTO Parinti_Adoptivi VALUES (206, 154,14,'+0747100980', 'paun.alex1976@gmail.com');
+INSERT INTO Parinti_Adoptivi VALUES (208, 163,3,'+0766099844', 'arnaut.ada@yahoo.com');
+INSERT INTO Parinti_Adoptivi VALUES (210, 151,9,'+0456990126', NULL);
+INSERT INTO Parinti_Adoptivi VALUES (212, 153,4,'+0756990009', 'macovei1989@gmail.com');
+Select *
+From Parinti_Adoptivi
+
+INSERT INTO Copil_Adoptiv VALUES(201, 1111,'Paun','Annabeth',TO_DATE('17-OCT-2010','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(203, 1111,'Van Doren','Charles',TO_DATE('02-AUG-2015','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(205, 1114,'Manole','Smaranda',TO_DATE('24-DEC-2009','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(207, 1113,'Avram','Amar-Alexander',TO_DATE('09-JUN-2017','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(209, 1112,'Rarau','Esalia-Medeea',TO_DATE('19-NOV-2013','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(211, 1112,'Rarau','Harry',TO_DATE('19-NOV-2013','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(213, 1115,'Gabanni','Eduardo',TO_DATE('05-FEB-2017','dd-MON-yyyy'));
+INSERT INTO Copil_Adoptiv VALUES(215, 1115,'Donova','Matei-Iulian',TO_DATE('05-JAN-2005','dd-MON-yyyy'));
+Select *
+From Copil_Adoptiv
+INSERT INTO Istoric_Adoptii VALUES(300,TO_DATE('25-SEP-2020','dd-MON-yyyy'), 201, 200); 
+INSERT INTO Istoric_Adoptii VALUES(301,TO_DATE('04-JAN-2011','dd-MON-yyyy'), 215, 202); 
+INSERT INTO Istoric_Adoptii VALUES(303,TO_DATE('09-MAY-2021','dd-MON-yyyy'), 205, 208);
+
+INSERT INTO Istoric_Adoptii VALUES(305,TO_DATE('25-APR-2017','dd-MON-yyyy'), 209, 204);
+INSERT INTO Istoric_Adoptii VALUES(307,TO_DATE('25-APR-2017','dd-MON-yyyy'), 211, 204);
+INSERT INTO Istoric_Adoptii VALUES(309,TO_DATE('29-NOV-2020','dd-MON-yyyy'), 203, 210);
+INSERT INTO Istoric_Adoptii VALUES(311,TO_DATE('19-MAR-2021','dd-MON-yyyy'), 207, 206);
+INSERT INTO Istoric_Adoptii VALUES(313,TO_DATE('07-MAR-2019','dd-MON-yyyy'), 213, 212);
+Select *
+From Istoric_Adoptii
+ALTER TABLE Istoric_Adoptii
+ADD CONSTRAINT id_datecopil unique (id_datecopil);
+COMMIT
+INSERT INTO Orfani VALUES (3000, 1111, 'Adamescu', 'Valentin', TO_DATE('07-MAR-2012','dd-MON-yyyy'),TO_DATE('10-OCT-2015','dd-MON-yyyy'),20);
+INSERT INTO Orfani VALUES (3001, 1111, 'Adamescu', 'Ioana-Andreea', TO_DATE('22-OCT-2010','ddMON-yyyy'),TO_DATE('10-OCT-2015','dd-MON-yyyy'),20);
+INSERT INTO Orfani VALUES (3002, 1112, 'Giura', 'Eden', TO_DATE('07-NOV-2016','dd-MON-yyyy'),TO_DATE('10-MAR-2017','dd-MON-yyyy'),10);
+INSERT INTO Orfani VALUES (3003, 1113, 'Zubarev', 'Anna', TO_DATE('18-JUN-2009','dd-MON-yyyy'),TO_DATE('19-SEP-2014','dd-MON-yyyy'),36); 
+INSERT INTO Orfani VALUES (3004, 1114, 'Osun', 'Laur-Adrian', TO_DATE('10-JUL-2015','dd-MON-yyyy'),TO_DATE('22-SEP-2019','dd-MON-yyyy'),97); 
+INSERT INTO Orfani VALUES (3005, 1113, 'Balan', 'Valeria', TO_DATE('01-JUN-2005','dd-MON-yyyy'),TO_DATE('22-DEC-2011','dd-MON-yyyy'),36); 
+INSERT INTO Orfani VALUES (3006, 1115, 'Nanu', 'Matei', TO_DATE('14-FEB-2009','dd-MON-yyyy'),TO_DATE('19-JUN-2014','dd-MON-yyyy'),12);
+
+INSERT INTO Orfani VALUES (3007, 1112, 'Zabava', 'Constantin-Adrian', TO_DATE('07-APR-2011','dd-MON-yyyy'),
+ TO_DATE('05-SEP-2016','dd-MON-yyyy'),03); 
+INSERT INTO Orfani VALUES (3008, 1115, 'Costin', 'Angela', TO_DATE('10-AUG-2014','dd-MON-yyyy'),
+ TO_DATE('15-JUL-2020','dd-MON-yyyy'),08); 
+Select *
+From Orfani
+INSERT INTO Istoric_Familii VALUES(11221, 3000,8,'Adamescu','In urma unui accident mama copiilor si-a 
+pierdut viata.
+Deoarece bunicii materni nu au putut avea grija de ei datorita varstei inaintate, iar tatal locuieste in Istanbul 
+copilul a intrat in grija statului.
+Alte rude nu mai exista, din cele stiute pana in acest moment. Contactul apartine bunicilor', '+0251226178');
+INSERT INTO Istoric_Familii VALUES(11222, 3001,8,'Adamescu','In urma unui accident mama copiilor si-a 
+pierdut viata.
+Deoarece bunicii materni nu au putut avea grija de ei datorita varstei inaintate, iar tatal locuieste in Istanbul, 
+ambii frati au intrat in grija statului.
+Alte rude nu mai exista, din cele stiute pana in acest moment. Contactul apartine bunicilor', '+0251226178');
+INSERT INTO Istoric_Familii VALUES(11223, 3003,10,'Zubarev','Deoarece ambii parinti au fost gasiti 
+vinovati de abuz emotional
+in ceea ce priveste propriul copil, acestia au cazut din drepturile parintesti. Alti membri ai familiei nu exista, pe 
+langa o matusa
+care locuieste in Austria', '+4391813339121');
+INSERT INTO Istoric_Familii VALUES(11224, 3002,11,'Giura','La cateva luni dupa nastere mama a lasat 
+copilul pe scarile orfelinatului.
+La cateva luni dupa aceasta fapta, aceasta a venit si a marturisit ca nu are situatia materiala necesara pentru a 
+avea grija de el. Nu se cunoaste tatal.
+Nu exista bunici materni.', NULL);
+INSERT INTO Istoric_Familii VALUES(11225, 3004,13,'Osun','Parinti divortati, legal in grija ii apartinuse 
+tatalui, care in prezent savarseste o pedeapsa de 10 ani. Mama a parasit tara in urma cu 4 ani si prea multe date 
+despre noua ei viata nu se cunosc.Bunicii paterni locuiesc in Pakistan.Contactul este al avocatului 
+dlui Osun.', ' +0786990889');
+INSERT INTO Istoric_Familii VALUES(11226, 3005,16,'Tafta','Ambii parinti au decedat in 2009, in urma 
+unui incediu, acesta ramanand in grija matusii de pe linie materna. Datorita modului in care si-a tratat nepotul, femeia a fost decazuta din dreptul de a
+avea grija de acesta. ', null);
+INSERT INTO Istoric_Familii VALUES(11227, 3008,17,'Costin',' Lasat in grija bunicilor de catre mama, acesta 
+a ajuns in centrul de plasament in momentul trecerii in nefiinta a bunicului. Nu se cunoaste tatal.
+Mama s-a recasatorit si nu mai poate fi contactata. Alti membri ai familiei nu se cunosc.' , null);
+
+SELECT * 
+From Istoric_Familii
+
+INSERT INTO Ingrijitor VALUES(555,1111, 'Arnaut Gabriela', TO_DATE('01-JUL-2006','dd-MON-yyyy') );
+INSERT INTO Ingrijitor VALUES(556,1112, 'Popescu Georgiana', TO_DATE('01-JUL-2003','dd-MON-yyyy') 
+);
+INSERT INTO Ingrijitor VALUES(557,1113, 'Manta George', TO_DATE('29-NOV-2010','dd-MON-yyyy') );
+INSERT INTO Ingrijitor VALUES(558,1114, 'Apostol Gabriel-Dumitru', TO_DATE('20-APR-2017','dd-MON-yyyy') );
+INSERT INTO Ingrijitor VALUES(559,1115, 'Baracuda Ozana', TO_DATE('11-MAY-2013','dd-MON-yyyy') 
+);
+INSERT INTO Ingrijitor VALUES(560,1111, 'Manole Iuliana-Oana', TO_DATE('01-NOV-2006','dd-MON-yyyy') );
+INSERT INTO Ingrijitor VALUES(561,1113, 'Vasiliche Dragos', TO_DATE('01-APR-2014','dd-MON-yyyy') 
+);
+INSERT INTO Ingrijitor VALUES(562,1114, 'Cioroboiu Smaranda', TO_DATE('21-NOV-2008','dd-MON-yyyy') );
+
+INSERT INTO Activitati VALUES(40,'echitatie',25);
+INSERT INTO Activitati VALUES(41,'balet',20);
+INSERT INTO Activitati VALUES(42,'fotografie',10);
+INSERT INTO Activitati VALUES(43,'pictura',18);
+INSERT INTO Activitati VALUES(44,'sah',15);
+INSERT INTO Activitati VALUES(45,'baschet',15);
+INSERT INTO Activitati VALUES(46,'cercetari in natura',19);
+INSERT INTO Activitati VALUES(47,'canotaj',10);
